@@ -300,11 +300,18 @@ fun minRemoveToMakeValid(s: String): String {
 
 //------------------------------------------------------------------------------------------
 
-/*1762. Buildings With an Ocean View
+## 1762. Buildings With an Ocean View
 
+**Problem Statement:**
 - here are n buildings in a line. You are given an integer array heights of size n that represents the heights of the buildings in the line.
 - The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a smaller height.
 - Return a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.*/
+
+---
+
+### **Solution in Kotlin**
+
+```kotlin
 
 fun findBuildings(heights: IntArray): IntArray {
     var max = Int.MIN_VALUE  // Tracks tallest building seen so far from the right
@@ -325,22 +332,29 @@ fun findBuildings(heights: IntArray): IntArray {
     res.reverse()
     return res.toIntArray()
 }
+```
 
-
-/*Time Complexity: O(n)
+Time Complexity: O(n)
 We traverse the array once (right to left) → O(n)
 Reverse the list at the end → O(n)
 Total still O(n)
 Space Complexity: O(n) worst case
-The res list can hold up to n building indices.*/
+The res list can hold up to n building indices.
 
 //------------------------------------------------------------------------------------------
 
-/*11. Container With Most Water
+## 11. Container With Most Water
 
+**Problem Statement:**
 - You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 - Find two lines that together with the x-axis form a container, such that the container contains the most water.
 - Return the maximum amount of water a container can store.*/
+
+---
+
+### **Solution in Kotlin**
+
+```kotlin
 
 fun maxArea(height: IntArray): Int {
     var left = 0
@@ -366,48 +380,6 @@ fun maxArea(height: IntArray): Int {
 
 // Time: O(n) — each pointer moves at most n steps total.
 // Space: O(1) — just a few integers.
-
-//------------------------------------------------------------------------------------------
-
+```
 
 
-//------------------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-
-//------------------------------------------------------------------------------------------
-
-
-
-//------------------------------------------------------------------------------------------

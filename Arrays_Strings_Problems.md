@@ -1,11 +1,11 @@
 
 
-// 167. Two Sum II - Input Array Is Sorted
+## 167. Two Sum II - Input Array Is Sorted
 
-/*
-Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-*/
+**Problem Statement:**
+- Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
+```kotlin
 fun twoSum(nums: IntArray, target: Int): IntArray {
     val map = HashMap<Int, Int>()   // Stores number -> index mapping
 
@@ -24,18 +24,19 @@ fun twoSum(nums: IntArray, target: Int): IntArray {
 
     return intArrayOf(0, 0) // If no solution found
 }
+```
+- Time Complexity: O(n) → each element is processed once, map lookups are O(1) on average.
+- Space Complexity: O(n) → in the worst case, we store all elements in the HashMap.
 
-// Time Complexity: O(n) → each element is processed once, map lookups are O(1) on average.
-// Space Complexity: O(n) → in the worst case, we store all elements in the HashMap.
+---
 
-//------------------------------------------------------------------------------------------
+## 14. Longest Common Prefix
 
-// 14. Longest Common Prefix
+**Problem Statement:**
+- Write a function to find the longest common prefix string amongst an array of strings.
+- If there is no common prefix, return an empty string "".
 
-/** Problem Statement:
-Write a function to find the longest common prefix string amongst an array of strings.
-If there is no common prefix, return an empty string "". **/
-
+```kotlin
 fun longestCommonPrefix(strs: Array<String>): String {
     if (strs.isEmpty()) return ""
 
@@ -52,18 +53,19 @@ fun longestCommonPrefix(strs: Array<String>): String {
 
     return prefix
 }
+```
+-- Time Complexity: O(N * M) → N = number of strings, M = average length of strings (in worst case we compare character by character).
+-- Space Complexity: O(1) → constant extra space.
 
-// Time Complexity: O(N * M) → N = number of strings, M = average length of strings (in worst case we compare character by character).
-// Space Complexity: O(1) → constant extra space.
+---
 
-//------------------------------------------------------------------------------------------
+## 88. Merge Sorted Array
 
-// 88. Merge Sorted Array
+**Problem Statement:**
+- You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+- Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 
-/*Problem Statement:
-You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
-Merge nums1 and nums2 into a single array sorted in non-decreasing order.*/
-
+```kotlin
 fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
     var p1 = m - 1   // pointer for nums1
     var p2 = n - 1   // pointer for nums2
@@ -79,17 +81,18 @@ fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
         }
     }
 }
+```
+- Time Complexity: O(m + n) → Each element compared and placed once.
+- Space Complexity: O(1) → In-place merge, no extra arrays.
 
-// Time Complexity: O(m + n) → Each element compared and placed once.
-// Space Complexity: O(1) → In-place merge, no extra arrays.
+---
 
-//------------------------------------------------------------------------------------------
+## 118. Pascal's Triangle
 
-// 118. Pascal's Triangle
+**Problem Statement:**
+Given an integer numRows, return the first numRows of Pascal's triangle.
 
-/*Problem Statement:
-Given an integer numRows, return the first numRows of Pascal's triangle.*/
-
+```kotlin
 fun generate(numRows: Int): List<List<Int>> {
     val triangle = mutableListOf<List<Int>>()
 
@@ -106,18 +109,20 @@ fun generate(numRows: Int): List<List<Int>> {
 
     return triangle
 }
+````
+- Time Complexity: O(numRows²) → Filling each row requires iteration.
+- Space Complexity: O(numRows²) → Stores all rows of the triangle.
 
-// Time Complexity: O(numRows²) → Filling each row requires iteration.
-// Space Complexity: O(numRows²) → Stores all rows of the triangle.
+---
 
-//------------------------------------------------------------------------------------------
+## 121. Best Time to Buy and Sell Stock
 
-// 121. Best Time to Buy and Sell Stock
+**Problem Statement:**
+- You are given an array prices where prices[i] is the price of a given stock on the ith day.
+- You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+- Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
-/*You are given an array prices where prices[i] is the price of a given stock on the ith day.
-You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
-Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.*/
-
+```kotlin
 fun maxProfit(prices: IntArray): Int {
     var profit = 0                       // Maximum profit found so far
     var buy = Int.MAX_VALUE              // Track the lowest price seen so far (best buy option)
@@ -134,25 +139,23 @@ fun maxProfit(prices: IntArray): Int {
 
     return profit
 }
+````
+- Time Complexity: O(n) > We iterate over the prices array once, checking each price exactly one time.
+- Space Complexity: O(1) > Only a few variables (profit, buy) are used regardless of input size.
 
-/*Time Complexity: O(n)
-We iterate over the prices array once, checking each price exactly one time.
+---
 
-Space Complexity: O(1)
-Only a few variables (profit, buy) are used regardless of input size.*/
 
-//------------------------------------------------------------------------------------------
+## 20. Valid Parentheses
 
-/*
-20. Valid Parentheses
-Given a string containing only '(', ')', '{', '}', '[' and ']',
-determine if the input string is valid.
+**Problem Statement:**
+- Given a string containing only '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 A string is valid if:
 1. Open brackets are closed by the same type of bracket.
 2. Open brackets are closed in the correct order.
-*/
 
+```kotlin
 fun isValid(s: String): Boolean {
     val stack = ArrayDeque<Char>()                // Stack to keep track of opening brackets
     val match = mapOf(')' to '(', '}' to '{', ']' to '[') // Closing -> Opening mapping
@@ -173,21 +176,18 @@ fun isValid(s: String): Boolean {
     // At the end, stack should be empty if all brackets were matched
     return stack.isEmpty()
 }
+```
+- Time Complexity: O(n) > Each character in s is processed once. Push/pop operations on ArrayDeque are O(1).
+- Space Complexity: O(n) > In the worst case (e.g., "(((((((("), all characters are stored in the stack. The mapping match is constant size, so negligible.
 
-/*Time Complexity: O(n)
-Each character in s is processed once.
-Push/pop operations on ArrayDeque are O(1).
+---
 
-Space Complexity: O(n)
-In the worst case (e.g., "(((((((("), all characters are stored in the stack.
-The mapping match is constant size, so negligible.*/
+## 56. Merge Intervals
 
-//------------------------------------------------------------------------------------------
+- Problem: Merge all overlapping intervals and return non-overlapping result.
+- Approach: Sort by start; iterate and merge when overlap occurs.
 
-// 56. Merge Intervals
-// Problem: Merge all overlapping intervals and return non-overlapping result.
-// Approach: Sort by start; iterate and merge when overlap occurs.
-// Time: O(n log n) for sort | Space: O(n) for output
+```kotlin
 fun merge(intervals: Array<IntArray>): Array<IntArray> {
     if (intervals.isEmpty()) return arrayOf()
     intervals.sortBy { it[0] }
@@ -205,14 +205,18 @@ fun merge(intervals: Array<IntArray>): Array<IntArray> {
     out.add(cur)
     return out.toTypedArray()
 }
+````
+- Time: O(n log n) for sort
+- Space: O(n) for output
 
-//------------------------------------------------------------------------------------------
+---
 
-/*
-242. Valid Anagram
+## 242. Valid Anagram
+
+**Problem Statement:**
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
-*/
 
+```kotlin
 fun isAnagram(s: String, t: String): Boolean {
     return if (s.length != t.length) false
     else {
@@ -229,15 +233,18 @@ fun isAnagram(s: String, t: String): Boolean {
         freq.all { it == 0 }
     }
 }
+```
+- Time: O(n) → single pass over strings.
+- Space: O(1) → 26-sized array regardless of input length.
 
-// Time: O(n) → single pass over strings.
-// Space: O(1) → 26-sized array regardless of input length.
+---
 
-//------------------------------------------------------------------------------------------
+## 26. Remove Duplicates from Sorted Array
 
-/*26. Remove Duplicates from Sorted Array
-Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.*/
+**Problem Statement:**
+- Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
+```kotlin
 fun removeDuplicates(nums: IntArray): Int {
     var p = 1                // pointer for placing the next unique element
     var prev = nums[0]       // track the last unique element
@@ -251,17 +258,19 @@ fun removeDuplicates(nums: IntArray): Int {
 
     return p   // length of the unique portion of the array
 }
+```
+- Time: O(n) → single pass over the array.
+- Space: O(1) → in-place modification, no extra storage.
 
-// Time: O(n) → single pass over the array.
-// Space: O(1) → in-place modification, no extra storage.
+---
 
-//------------------------------------------------------------------------------------------
+## 1249. Minimum Remove to Make Valid Parentheses
 
-/*1249. Minimum Remove to Make Valid Parentheses
+**Problem Statement:**
+- Given a string s of '(' , ')' and lowercase English characters.
+- Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
 
-Given a string s of '(' , ')' and lowercase English characters.
-Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.*/
-
+```kotlin
 fun minRemoveToMakeValid(s: String): String {
     val indexesToRemove = mutableSetOf<Int>() // indices of invalid parentheses
     val stack = ArrayDeque<Int>() // store indices of '(' that need matching
@@ -294,22 +303,18 @@ fun minRemoveToMakeValid(s: String): String {
     }
     return sb.toString()
 }
+```
+- Time: O(n) (two passes through the string).
+- Space: O(n) (because we’re building a new string).
 
-// Time: O(n) (two passes through the string).
-// Space: O(n) (because we’re building a new string).
-
-//------------------------------------------------------------------------------------------
+---
 
 ## 1762. Buildings With an Ocean View
 
 **Problem Statement:**
 - here are n buildings in a line. You are given an integer array heights of size n that represents the heights of the buildings in the line.
 - The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a smaller height.
-- Return a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.*/
-
----
-
-### **Solution in Kotlin**
+- Return a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.
 
 ```kotlin
 
@@ -333,26 +338,17 @@ fun findBuildings(heights: IntArray): IntArray {
     return res.toIntArray()
 }
 ```
+- Time Complexity: O(n) - We traverse the array once (right to left) → O(n), Reverse the list at the end → O(n), Total still O(n)
+- Space Complexity: O(n) worst case
 
-Time Complexity: O(n)
-We traverse the array once (right to left) → O(n)
-Reverse the list at the end → O(n)
-Total still O(n)
-Space Complexity: O(n) worst case
-The res list can hold up to n building indices.
-
-//------------------------------------------------------------------------------------------
+---
 
 ## 11. Container With Most Water
 
 **Problem Statement:**
 - You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 - Find two lines that together with the x-axis form a container, such that the container contains the most water.
-- Return the maximum amount of water a container can store.*/
-
----
-
-### **Solution in Kotlin**
+- Return the maximum amount of water a container can store.
 
 ```kotlin
 
@@ -377,9 +373,131 @@ fun maxArea(height: IntArray): Int {
     }
     return best
 }
-
-// Time: O(n) — each pointer moves at most n steps total.
-// Space: O(1) — just a few integers.
 ```
+- Time: O(n) — each pointer moves at most n steps total.
+- Space: O(1) — just a few integers.
 
+---
+
+## 3. Longest Substring Without Repeating Characters
+
+**Problem Statement:**
+- Given a string s, find the length of the longest substring without duplicate characters.
+
+```kotlin
+fun lengthOfLongestSubstring(s: String): Int {
+    val map = mutableMapOf<Char, Int>() // Stores char -> last seen index
+    var prev = -1  // Marks position before the start of current valid window
+    var res = 0    // Max length of substring found
+
+    for (i in s.indices) {
+        val ch = s[i]
+
+        // If char seen before, move 'prev' to max of its last seen index
+        if (map.containsKey(ch)) {
+            prev = maxOf(prev, map[ch]!!)
+        }
+
+        // Update the last seen index of current char
+        map[ch] = i
+
+        // Window size is (i - prev)
+        res = maxOf(res, i - prev)
+    }
+
+    return res
+}
+```
+- Time: O(n) — Each character is processed once, and map operations are O(1).
+- Space: O(min(n, charset)) — Map stores at most one entry per character (e.g., 26 lowercase letters or full ASCII).
+
+---
+
+## 53. Maximum Subarray
+
+**Problem Statement:**
+- Given an integer array nums, find the subarray with the largest sum, and return its sum.
+
+```kotlin
+fun maxSubArray(nums: IntArray): Int {
+    var res = nums[0]            // Start with the first element as initial max
+    var curr = nums[0]           // Current running sum
+
+    // Start loop from index 1 because we already used index 0
+    for (i in 1 until nums.size) {
+        val num = nums[i]
+        // Either take the current number alone OR extend the previous subarray
+        curr = maxOf(num, curr + num)
+        // Track the global maximum
+        res = maxOf(res, curr)
+    }
+
+    return res
+}
+```
+- Time: O(n) — single pass through the array.
+- Space: O(1) — uses only two variables (curr and res).
+
+---
+
+## 560. Subarray Sum Equals K
+
+**Problem Statement:**
+- Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+
+```kotlin
+fun subarraySum(nums: IntArray, k: Int): Int {
+    var sum = 0
+    var ans = 0
+    val prefixMap = mutableMapOf<Int, Int>()
+
+    // base case: subarray starting at index 0
+    prefixMap[0] = 1
+
+    for (num in nums) {
+        sum += num
+
+        // Check if there is a prefix sum that satisfies sum(i) - prefixSum = k
+        // Add count of those prefix sums
+        val prefix = sum - k
+        ans += prefixMap[prefix] ?: 0
+
+        // Update frequency of current prefix sum
+        prefixMap[sum] = (prefixMap[sum] ?: 0) + 1
+    }
+
+    return ans
+}
+```
+- Time: O(n)
+- Space: O(n) (for the prefix map)
+
+---
+
+## 49. Group Anagrams
+
+**Problem Statement:**
+- Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+```kotlin
+fun groupAnagrams(strs: Array<String>): List<List<String>> {
+    if (strs.isEmpty()) return emptyList()
+
+    val anagramMap = mutableMapOf<String, MutableList<String>>()
+
+    for (str in strs) {
+        // Sort the string to create a unique key for its anagram group
+        val sorted = str.toCharArray().sorted().joinToString("")
+
+        // If key not present, create a new list, then add the string
+        anagramMap.getOrPut(sorted) { mutableListOf() }.add(str)
+    }
+
+    return anagramMap.values.toList()
+}
+```
+- Time Complexity: Sorting each string: O(m log m) where m = length of each string. => For n strings → O(n * m log m).
+- Space Complexity: Map storing all strings grouped → O(n * m) (in worst case, all unique).
+
+---
 
